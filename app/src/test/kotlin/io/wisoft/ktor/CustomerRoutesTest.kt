@@ -11,14 +11,14 @@ import io.ktor.util.KtorExperimentalAPI
 import io.wisoft.ktor.domain.Customers
 import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.transactions.transaction
-import kotlin.test.AfterTest
-import kotlin.test.Test
+import org.junit.jupiter.api.AfterEach
+import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
 
 @KtorExperimentalAPI
 class CustomerRoutesTest {
 
-    @AfterTest
+    @AfterEach
     fun dropSchema(): Unit = transaction {
         SchemaUtils.drop(Customers)
     }
