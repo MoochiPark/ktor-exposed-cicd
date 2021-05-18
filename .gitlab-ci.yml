@@ -1,15 +1,15 @@
-image: docker:20.10.6
-
-services:
-  - docker:20.10.6-dind
-
-before_script:
-  - docker info
+image: docker:latest
 
 stages:
   - build-jar
   - build-image
   - test
+
+services:
+  - docker:dind
+
+before_script:
+  - docker info
 
 build-jar-job:
   image: gradle:7.0.2-jdk11
