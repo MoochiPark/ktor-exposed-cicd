@@ -8,9 +8,6 @@ stages:
 services:
   - docker:dind
 
-before_script:
-  - docker info
-
 build-jar-job:
   image: gradle:7.0.2-jdk11
   stage: build-jar
