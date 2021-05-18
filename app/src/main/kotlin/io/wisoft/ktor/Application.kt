@@ -29,8 +29,8 @@ fun Application.module(testing: Boolean = true) {
     routing {
         customer(CustomerHandler())
     }
-    when (testing) {
-        true -> testInit()
-        false -> init()
+    when {
+        testing -> testInit()
+        else -> init()
     }
 }

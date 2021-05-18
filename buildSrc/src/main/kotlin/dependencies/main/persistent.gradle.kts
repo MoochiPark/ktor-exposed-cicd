@@ -17,8 +17,8 @@ val implementation: Configuration by configurations
 val runtimeOnly: Configuration by configurations
 dependencies {
 //    implementation(PersistentDependencies.postgresql)
-    runtimeOnly(PersistentDependencies.h2)
-    runtimeOnly(PersistentDependencies.exposedJdbc)
+    implementation(PersistentDependencies.h2)
+    implementation(PersistentDependencies.exposedJdbc)
     implementation(PersistentDependencies.exposedCore)
     implementation(PersistentDependencies.exposedDao)
     implementation(PersistentDependencies.exposedJavaTime)

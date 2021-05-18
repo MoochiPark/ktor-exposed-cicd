@@ -52,3 +52,14 @@ tasks.withType<Wrapper> {
     gradleVersion = "7.0"
     distributionType = Wrapper.DistributionType.BIN
 }
+
+val jar by tasks.getting(Jar::class) {
+    doFirst {
+        from(configurations.compileClasspath.get().map { if (it.isDirectory) it else zipTree(it) })
+    }
+    exclude("META-INF/*.RSA", "META-INF/*.SF", "META-INF/*.DSA")
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    manifest {
+        attributes["Main-Class"] = "io.wisoft.ktor.ApplicationKt"
+    }
+}

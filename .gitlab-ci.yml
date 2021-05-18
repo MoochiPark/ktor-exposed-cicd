@@ -1,16 +1,30 @@
-image: openjdk:11-jdk-slim
+image: docker:20.10.6
+
+services:
+  - docker:20.10.6-dind
+
+before_script:
+  - docker info
 
 stages:
-  - build
+  - build-jar
+  - build-image
   - test
 
-build-job:
-  stage: build
+build-jar-job:
+  image: gradle:7.0.2-jdk11
+  stage: build-jar
   script:
     - ./gradlew build
   artifacts:
     paths:
       - app/build/libs/*.jar
+
+build-image-job:
+  stage: build-image
+  script:
+    - docker build -t ktor-exposed .
+#    - docker run -p 8080:8080 ktor-exposed
 
 test-job:
   stage: test
