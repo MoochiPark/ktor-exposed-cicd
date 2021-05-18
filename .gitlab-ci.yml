@@ -1,12 +1,7 @@
-image: docker:latest
-
 stages:
   - build-jar
   - build-image
   - test
-
-services:
-  - docker:dind
 
 build-jar-job:
   image: gradle:7.0.2-jdk11
